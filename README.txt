@@ -202,7 +202,7 @@ Proceed as follows to install the dependent libraries and to install active cont
 
   3) Now that all dependant libraries have been installed we can proceed to
      build the active contour source code as follows.
-	$ cd <edge_detection path>
+	$ cd <active contour path>
 	$ make
 
 	
