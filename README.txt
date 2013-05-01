@@ -145,7 +145,7 @@ GUIDE USER INTERFACE
 DEVELOPER MANUAL
 ================
 
-Functionality of active contour library are addressed as follows:
+Functionality of active contour library is addressed as follows:
 
 #1 GVF snake:
 conduct GVF snake to evolve initial-contour in order to detect object outline
@@ -166,7 +166,7 @@ Output: a CvPoint type array contains coordinates of all points on detected cont
 
 Parameters:
 	image  	- The source image
-	points 	- The array contains coordinates of each point on the initial-contour
+	points 	- The array contains coordinates of all points on initial-contour
 	length 	- Return length of the output CvPoint array
 	alpha  	- GVF snake parameter 1 
 	beta   	- GVF snake parameter 2
@@ -175,14 +175,14 @@ Parameters:
 	ITER_ext- external iteration
 	ITER_int- internal iteration
 	calcInitail -
-		CV_REINITIAL: Re-initialization of contour will be conducted
-		Note: significantly increase accuracy, but increase execution time
-		CV_NREINITIAL: Re-initialization of contour will not be conducted     
+		CV_REINITIAL: Re-initialisation of contour will be conducted
+		Note: Re-initialisation may significantly increase accuracy, but would increase execution time simultaneously.
+		CV_NREINITIAL: Re-initialisation of contour will not be conducted     
 	alg -   
 		three different ways to generate energy field
 		 CV_GVF: Gradient Vector Flow will be adopted as energy field
 		 CV_GRD: Gradient Magnitude for every image pixel
-		 Note: make GVFsnake be equivalent to conventional Snake		
+		 Note: CV_GRD will make GVFsnake be equivalent to conventional Snake
 		 CV_IMG: The input image itself is considered 
 
 -------
@@ -220,6 +220,6 @@ Parameters:
 	
 REFERENCE 
 =========
-[1] C. Xu and J. L. Prince, ``Snakes, Shapes, and Gradient Vector Flow,'' IEEE Transactions on Image Processing, 7(3), pp. 359-369, March 1998.
+[1] C. Xu and J. L. Prince, "Snakes, Shapes, and Gradient Vector Flow,'' IEEE Transactions on Image Processing, 7(3), pp. 359-369, March 1998.
 
 [2] C. Li, C. Xu, C. Gui, and M. D. Fox, "Distance Regularized Level Set Evolution and its Application to Image Segmentation", IEEE Trans. Image Processing, vol. 19 (12), 2010.
