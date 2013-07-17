@@ -14,8 +14,8 @@
 #include <fstream> 
 #endif
 
-#define CV_LSE_OUT 1
-#define CV_LSE_IN  0
+#define CV_LSE_SHR 1
+#define CV_LSE_EXP 0
 
 CV_IMPL void cvDirac(const CvArr* srcarr,
                      CvArr* dstarr,

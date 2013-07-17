@@ -112,10 +112,13 @@ int main(int argc, char* argv[])
       alg_option = 1;
     else if(strcmp(argv[1], "-2") == 0)
       alg_option = 2;
+    else if(strcmp(argv[1], "-3")==0)
+      alg_option = 3;
     else{
       cout<<"WARNING: Please choose one of following two active contour methods: "<<endl;
       cout<<"-1: Gradient Vector Field Snake"<<endl;
-      cout<<"-2: Distance Regularized Level Set Evolution"<<endl;
+      cout<<"-2: Distance Regularized Level Set Evolution (Expand curve)"<<endl;
+      cout<<"-3: Distance Regularized Level Set Evolution (Shrink curve)"<<endl;
     }
 
     if(!(img0 = cvLoadImage(argv[2],1))){
@@ -244,14 +247,16 @@ int main(int argc, char* argv[])
 	     CV_GRD: Gradient Magnitude for every image pixel
 	     CV_IMG: The input image itself is considered 
 	     */
-            else{
-	      point= cvDRLSE(img1, mask, &length, lambda, alfa, epsilon, timestep, 200, 5, CV_LSE_IN);
+            else if(alg_option == 2)
+                point= cvDRLSE(img1, mask, &length, lambda, alfa, epsilon, timestep, 200, 5, CV_LSE_EXP);
 	    /*
 	      Evolution direction:
-	       CV_LSE_OUT: Contour will shrink
-	       CV_LSE_IN:  Contour will expand
+	       CV_LSE_SHR: Contour will shrink
+	       CV_LSE_EXP: Contour will expand
 	     */
-	    }
+            else
+                point= cvDRLSE(img1, mask, &length, lambda, alfa, epsilon, timestep, 200, 5, CV_LSE_SHR);
+    
             t = (float)cvGetTickCount() - t;
             if (!point){
                 cout<<"Warning: Make sure initial-contour is closed"<<endl;

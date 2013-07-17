@@ -466,15 +466,15 @@ cvDRLSE(const CvArr * image,
         for (int i=0; i<size.width; i++) {
             int idx = CV_IMAGE_ELEM( marker, int, j, i );
             if (idx >0 )
-	      if (flag == CV_LSE_OUT)
-		fPtr[i+iStep*j]=-2.0f;
-              else
-		fPtr[i+iStep*j]=2.0f;
+                if (flag == CV_LSE_SHR)
+                    fPtr[i+iStep*j]=-2.0f;
+                else
+                    fPtr[i+iStep*j]=2.0f;
             else
-              if (flag == CV_LSE_OUT)
-		fPtr[i+iStep*j]=2.0f;
-              else
-		fPtr[i+iStep*j]=-2.0f;
+                if (flag == CV_LSE_SHR)
+                    fPtr[i+iStep*j]=2.0f;
+                else
+                    fPtr[i+iStep*j]=-2.0f;
         }
     
     for (int i=0; i<ITER_ext; i++) {
@@ -483,7 +483,7 @@ cvDRLSE(const CvArr * image,
     }
     cvDrlse_edge(phi, g, phi, lambda, mu, 0.0f, epsilon, timestep, ITER_int);
     cvZero(msk);
-    if (flag == CV_LSE_OUT)
+    if (flag == CV_LSE_SHR)
         cvThreshold(phi, msk, 0.0f, 255, CV_THRESH_BINARY_INV);
     else
         cvThreshold(phi, msk, 0.0f, 255, CV_THRESH_BINARY);

@@ -82,18 +82,24 @@ Quick run:
 
 #1 Contour detection in colour image without predefined masks:
   To run GVF snake demonstration:
-  ./active_contour_demo -1 test_images/<input image name>.png
+  ./active_contour_demo -1 images/<input image name>.png
 
-  To run DRLSE demonstration:
-  ./active_contour_demo -2 test_images/<input image name>.png
-where '-1' and '-2' denotes the index of corresponding active contour algorithm.
+  To run DRLSE demonstration (Expand initial curve from inside of object):
+  ./active_contour_demo -2 images/<input image name>.png
+
+  To run DRLSE demonstration (Shrink initial curve from outside of object):
+  ./active_contour_demo -3 images/<input image name>.png
+where '-1', '-2' and '-3' denotes the index of corresponding active contour algorithm.
 
 #2 Contour detection in colour image with predefined masks:
   To run GVF snake demonstration:
   ./active_contour_demo -1 test_images/<input image name>.png test_images/<input image name>_mask.png
 
-  To run DRLSE demonstration:
-  ./active_contour_demo -2 test_images/<input image name>.png test_images/<input image name>_mask.png
+  To run DRLSE demonstration (Expand initial curve from inside of object):
+  ./active_contour_demo -2 test_images/<input image name>.png test_images/<input image name>_mask_expand.png
+ 
+  To run DRLSE demonstration (Shrink initial curve from outside of object):
+  ./active_contour_demo -3 test_images/<input image name>.png test_images/<input image name>_mask_shrink.png
 
 #3 The output names are specified, and stored in directory "images":     
   - "<input image name>_ini.png" displays the initial-contour in the input image 
